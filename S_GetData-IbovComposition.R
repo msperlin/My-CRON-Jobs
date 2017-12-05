@@ -1,15 +1,7 @@
-rm(list=ls())
-
-my.d <- '~/GitRepo/My-CRON-Jobs'
-
-setwd(my.d)
-
-rm(list = ls())
-
 library(XML) 
 library(stringr)
 
-save.df <- TRUE
+cat('\nGetting Ibov composition')
 
 my.name <-'IbovComp'
 last.date <- Sys.Date()
