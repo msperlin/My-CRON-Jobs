@@ -6,7 +6,7 @@ setwd(my.d)
 
 rm(list = ls())
 
-library(XML)
+library(XML) 
 library(stringr)
 
 save.df <- TRUE
