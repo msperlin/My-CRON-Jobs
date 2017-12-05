@@ -14,7 +14,7 @@ write.csv(x = df.yield, file = f.out, row.names = F)
 
 zip.out <- file.path('Yield Curve', 
                      paste0('YieldCurve_', df.yield$current.date[1],'.zip'))
-zip(zipfile = zip.out, files = f.out, flags = '-j' )
+zip(zipfile = zip.out, files = f.out, flags = '-j' ) 
 
 
 library(ggplot2)
