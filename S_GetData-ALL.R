@@ -10,3 +10,4 @@ source('S_GetData-YieldCurve.R')
 
 system('git add .')
 system(paste0('git commit -m "', 'CRON BOT: ', Sys.time(), '"'))
+system('git push')
