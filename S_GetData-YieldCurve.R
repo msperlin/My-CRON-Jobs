@@ -1,6 +1,6 @@
 rm(list=ls())
 
-my.d <- '~/GitRepo/My-CRON-Jobs'
+my.d <- '~/GitRepo/My-CRON-Jobs' 
 
 setwd(my.d)
 library(GetTDData)
