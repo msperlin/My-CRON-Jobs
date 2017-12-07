@@ -1,5 +1,6 @@
 library(XML) 
 library(stringr)
+library(rdrop2)
 
 cat('\nGetting Ibov composition')
 
@@ -30,3 +31,6 @@ write.csv(x = df.ibov.comp, file = f.out, row.names = F)
 zip.out <- file.path('Ibov Composition', 
                      paste0('IbovComp_', Sys.Date(),'.zip'))
 zip(zipfile = zip.out, files = f.out, flags = '-j' )
+
+token <- readRDS("~/droptoken.rds")
+drop_upload(file = zip.out, path = 'ODAFIN/IbovComposition', dtoken = token)

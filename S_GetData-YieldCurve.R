@@ -1,4 +1,5 @@
 library(GetTDData)
+library(rdrop2)
 
 cat('\nGetting Yield curve')
 
@@ -13,3 +14,5 @@ zip.out <- file.path('Yield Curve',
                      paste0('YieldCurve_', df.yield$current.date[1],'.zip'))
 zip(zipfile = zip.out, files = f.out, flags = '-j' ) 
 
+token <- readRDS("~/droptoken.rds")
+drop_upload(file = zip.out, path = 'ODAFIN/YieldCurve', dtoken = token)
