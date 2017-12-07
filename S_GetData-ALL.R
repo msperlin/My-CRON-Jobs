@@ -5,8 +5,8 @@ setwd(my.d)
 
 system('git pull')
 
-source('S_GetData-IbovComposition.R')
-source('S_GetData-YieldCurve.R')
+try(source('S_GetData-IbovComposition.R'))
+try(source('S_GetData-YieldCurve.R'))
 
 system('git add .')
 system(paste0('git commit -m "', 'CRON BOT: ', Sys.time(), '"'))
