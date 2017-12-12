@@ -4,7 +4,7 @@
 # 1) Install Docker: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
 # 2) RUN AS SUDO: sudo docker run -d -p 4445:4444 selenium/standalone-firefox:2.53.1
 
-rm(list = ls())
+#rm(list = ls())
 
 #.libPaths('/home/msperlin/R/x86_64-pc-linux-gnu-library/3.4/')
 
@@ -17,6 +17,8 @@ my.d <- '/home/msperlin/GitRepo/My-CRON-Jobs/'
 setwd(my.d)
 
 source('fcts/Brokers-fcts.R')
+
+system('docker stop $(docker ps -aq)')
 system('docker run -d -p 4445:4444 selenium/standalone-firefox:2.53.1')
 
 # Run a server for example using Docker
@@ -75,7 +77,7 @@ while (TRUE) {
     name.now <- broker.name[i.url]
     id.now <- broker.id[i.url]
     
-    cat('\n\tReading info on ', name.now)
+    cat(paste0('\n\t', Sys.time(), ' - ', 'Reading info on ', name.now))
     
     df.out <- get.broker.info(url.now)
     
@@ -107,3 +109,6 @@ while (TRUE) {
 my.file <- paste0('Brokers/BrokersInfo_', Sys.Date(), '.rds') 
 saveRDS(object = df.brokers, file = my.file)
 drop_upload(file = my.file, path = 'ODAFIN/Brokers', dtoken = token)
+
+# stop all containers
+system('docker stop $(docker ps -aq)')

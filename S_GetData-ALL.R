@@ -13,6 +13,8 @@ try(source('S_GetData-IbovComposition.R') )
 
 try(source('S_GetData-YieldCurve.R') )
 
+try(source('S_GetData-BrokersInfo.R') )
+
 #system('git add .')
 #system(paste0('git commit -m "', 'CRON BOT: ', Sys.time(), '"'))
 #system('git push')
