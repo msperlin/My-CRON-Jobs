@@ -4,14 +4,7 @@ library(rdrop2)
 
 cat('\nGetting Ibov composition')
 
-my.name <-'IbovComp'
-last.date <- Sys.Date()
-first.date <- last.date - 5*365
-first.date <- as.Date('2010-01-01')
-
 # get list of ibovespa's tickers from wbsite (does NOT work)
-
-#myUrl <- 'http://www.infomoney.com.br/ibovespa/composicao'
 
 myUrl <- 'http://bvmf.bmfbovespa.com.br/indices/ResumoCarteiraTeorica.aspx?Indice=IBOV&idioma=pt-br'
 df.ibov.comp <- readHTMLTable(myUrl)[[1]]
@@ -32,5 +25,4 @@ zip.out <- file.path('Ibov Composition',
                      paste0('IbovComp_', Sys.Date(),'.zip'))
 zip(zipfile = zip.out, files = f.out, flags = '-j' )
 
-token <- readRDS("~/droptoken.rds")
 drop_upload(file = zip.out, path = 'ODAFIN/IbovComposition', dtoken = token)
